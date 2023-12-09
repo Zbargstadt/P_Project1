@@ -16,6 +16,7 @@ class Ui_Account_Bank(object):
         Account_Bank.setMaximumSize(QtCore.QSize(400, 400))
         self.centralwidget = QtWidgets.QWidget(parent=Account_Bank)
         self.centralwidget.setObjectName("centralwidget")
+
         self.label_bank = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_bank.setGeometry(QtCore.QRect(110, 0, 231, 51))
         font = QtGui.QFont()
@@ -26,6 +27,7 @@ class Ui_Account_Bank(object):
         font.setWeight(75)
         self.label_bank.setFont(font)
         self.label_bank.setObjectName("label_bank")
+
         self.label_account_name = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_account_name.setGeometry(QtCore.QRect(20, 80, 451, 31))
         font = QtGui.QFont()
@@ -34,6 +36,7 @@ class Ui_Account_Bank(object):
         font.setUnderline(False)
         self.label_account_name.setFont(font)
         self.label_account_name.setObjectName("label_account_name")
+
         self.label_balance = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_balance.setGeometry(QtCore.QRect(50, 150, 251, 16))
         font = QtGui.QFont()
@@ -43,15 +46,19 @@ class Ui_Account_Bank(object):
         font.setWeight(75)
         self.label_balance.setFont(font)
         self.label_balance.setObjectName("label_balance")
+
         self.button_deposit = QtWidgets.QPushButton(parent=self.centralwidget)
         self.button_deposit.setGeometry(QtCore.QRect(80, 230, 75, 23))
         self.button_deposit.setObjectName("button_deposit")
+
         self.button_withdraw = QtWidgets.QPushButton(parent=self.centralwidget)
         self.button_withdraw.setGeometry(QtCore.QRect(210, 230, 75, 23))
         self.button_withdraw.setObjectName("button_withdraw")
+
         self.input_amount = QtWidgets.QLineEdit(parent=self.centralwidget)
         self.input_amount.setGeometry(QtCore.QRect(80, 190, 201, 20))
         self.input_amount.setObjectName("input_amount")
+
         self.label_account_type = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_account_type.setGeometry(QtCore.QRect(20, 50, 221, 21))
         font = QtGui.QFont()
@@ -61,6 +68,7 @@ class Ui_Account_Bank(object):
         font.setWeight(50)
         self.label_account_type.setFont(font)
         self.label_account_type.setObjectName("label_account_type")
+
         self.label_validity = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_validity.setGeometry(QtCore.QRect(150, 270, 111, 21))
         font = QtGui.QFont()
@@ -69,10 +77,12 @@ class Ui_Account_Bank(object):
         self.label_validity.setFont(font)
         self.label_validity.setText("")
         self.label_validity.setObjectName("label_validity")
+
         self.label_errors = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_errors.setGeometry(QtCore.QRect(80, 300, 241, 16))
         self.label_errors.setText("")
         self.label_errors.setObjectName("label_errors")
+
         Account_Bank.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=Account_Bank)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 400, 21))

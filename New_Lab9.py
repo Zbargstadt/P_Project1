@@ -5,13 +5,24 @@ import csv, os.path
 
 
 class Logic_Setup(QMainWindow, Ui_SetupWindow):
+    '''
+       Class that applies the Login GUI
+       Also houses functions login and create
+    '''
     def __init__(self):
+        '''
+        Initializes Login Gui
+        '''
         super().__init__()
         self.setupUi(self)
         self.button_login.clicked.connect(lambda: self.login())
         self.button_create.clicked.connect(lambda: self.create())
 
     def login(self):
+        '''
+        Allows user to login into saved account
+        :return: Access Bank GUI
+        '''
         Logic_Setup.login_list = [self.input_username.text(), self.input_password.text()]
         if os.path.isfile(f'files\\names.csv'):
             with open('files\\names.csv', 'r', newline='') as csv_file:
@@ -30,7 +41,11 @@ class Logic_Setup(QMainWindow, Ui_SetupWindow):
                         self.label_error.setText('ERROR: User Doesnt Exist')
         else:
             self.label_error.setText('ERROR: No Users Yet')
-    def create(self):
+    def create(self) -> None:
+        '''
+        Allows user to create new account
+        :return: Access Bank GUI
+        '''
         Logic_Setup.login_list = [self.input_username.text(), self.input_password.text()]
         repeat = False
         if os.path.isfile(f'files\\names.csv'):
@@ -62,7 +77,14 @@ class Logic_Setup(QMainWindow, Ui_SetupWindow):
 
 
 class Logic_Bank(QMainWindow, Ui_Account_Bank):
-    def __init__(self):
+    '''
+    Class that applies the Bank GUI
+    Also houses functions deposit and withdraw
+    '''
+    def __init__(self) -> None:
+        '''
+        Initializes GUI
+        '''
         super().__init__()
         self.setupUi(self)
         Logic_Setup.account_balance = 0
@@ -77,7 +99,11 @@ class Logic_Bank(QMainWindow, Ui_Account_Bank):
         self.button_deposit.clicked.connect(lambda: self.deposit())
         self.button_withdraw.clicked.connect(lambda: self.withdraw())
 
-    def deposit(self):
+    def deposit(self) -> None:
+        '''
+        Allows user to deposit money into balance
+        :return:
+        '''
         self.label_errors.setText('')
         try:
             amount = float(self.input_amount.text())
@@ -92,8 +118,13 @@ class Logic_Bank(QMainWindow, Ui_Account_Bank):
                 csv_writer.writerow(balance)
         except:
             self.label_validity.setText('Invalid Deposit')
+            self.label_errors.setText('Error: Must be a positive number')
 
-    def withdraw(self):
+    def withdraw(self) -> None:
+        '''
+        Allows user to withdraw money from balance
+        :return:
+        '''
         self.label_errors.setText('')
         try:
             amount = float(self.input_amount.text())
@@ -113,3 +144,4 @@ class Logic_Bank(QMainWindow, Ui_Account_Bank):
                 csv_writer.writerow(balance)
         except:
             self.label_validity.setText('Invalid Withdraw')
+            self.label_errors.setText('Error: Must be a positive number')
