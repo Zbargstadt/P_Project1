@@ -87,6 +87,7 @@ class Logic_Bank(QMainWindow, Ui_Account_Bank):
         '''
         super().__init__()
         self.setupUi(self)
+        #Check For Previous Data / Setup Variables
         Logic_Setup.account_balance = 0
         self.label_account_name.setText(f'Welcome {Logic_Setup.login_list[0]}')
         if os.path.isfile(f'files\\{Logic_Setup.login_list[0]}.csv'):
@@ -95,6 +96,8 @@ class Logic_Bank(QMainWindow, Ui_Account_Bank):
                 next(csv_reader)
                 for line in csv_reader:
                     Logic_Setup.account_balance = line[0]
+
+        #Setup Button Clicks
         self.label_balance.setText(f'Balance: {Logic_Setup.account_balance}')
         self.button_deposit.clicked.connect(lambda: self.deposit())
         self.button_withdraw.clicked.connect(lambda: self.withdraw())
@@ -106,10 +109,13 @@ class Logic_Bank(QMainWindow, Ui_Account_Bank):
         '''
         self.label_errors.setText('')
         try:
+            #Add Deposit
             amount = float(self.input_amount.text())
             Logic_Setup.account_balance = Logic_Setup.account_balance + amount
             self.label_validity.setText('Valid Deposit')
             self.label_balance.setText(f'Balance: {Logic_Setup.account_balance}')
+
+            #Save Balance
             with open(f'files\\{Logic_Setup.login_list[0]}.csv', 'w', newline='') as csv_file:
                 csv_writer = csv.writer(csv_file)
                 header = ['Balance']
@@ -127,6 +133,7 @@ class Logic_Bank(QMainWindow, Ui_Account_Bank):
         '''
         self.label_errors.setText('')
         try:
+            #Subtract Withdrawn Amount
             amount = float(self.input_amount.text())
             Logic_Setup.account_balance = Logic_Setup.account_balance - amount
             if Logic_Setup.account_balance < 0:
@@ -136,6 +143,8 @@ class Logic_Bank(QMainWindow, Ui_Account_Bank):
             else:
                 self.label_validity.setText('Valid Withdraw')
                 self.label_balance.setText(f'Balance: {Logic_Setup.account_balance}')
+
+            #Save Balance
             with open(f'files\\{Logic_Setup.login_list[0]}.csv', 'w', newline='') as csv_file:
                 csv_writer = csv.writer(csv_file)
                 header = ['Balance']
