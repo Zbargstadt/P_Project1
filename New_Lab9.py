@@ -6,10 +6,10 @@ import csv, os.path
 
 class Logic_Setup(QMainWindow, Ui_SetupWindow):
     '''
-       Class that applies the Login GUI
-       Also houses functions login and create
+    Class that applies the Login GUI
+    Also houses functions login and create
     '''
-    def __init__(self):
+    def __init__(self) -> None:
         '''
         Initializes Login Gui
         '''
@@ -18,7 +18,7 @@ class Logic_Setup(QMainWindow, Ui_SetupWindow):
         self.button_login.clicked.connect(lambda: self.login())
         self.button_create.clicked.connect(lambda: self.create())
 
-    def login(self):
+    def login(self) -> None:
         '''
         Allows user to login into saved account
         :return: Access Bank GUI
